@@ -17,6 +17,16 @@ services:
     build: ./webapp
     ports:
       - "80:80"
+  
+  git-server:
+    build: 
+      context: ./git_server
+      dockerfile: gitserver.Dockerfile
+    restart: always
+    ports:
+      - "3444:3444"
+    volumes:
+      - ./git_server:/var/www/git
 
 volumes:
   # jenkins_data:

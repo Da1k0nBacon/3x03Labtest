@@ -18,7 +18,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./webapp/Webfiles
+      - ./webapp/Webfiles:/var/www/html
   
   git-server:
     build: ./git_server

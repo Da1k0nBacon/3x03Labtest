@@ -1,5 +1,26 @@
 <?php 
 	session_start();
+
+	function passwordCheck($pass) {
+		$myfile = "10-million-password-list-top-1000.txt";
+		$myFileLink = fopen($myFile, 'r');
+
+		$myFileContents = file_get_contents($myFileLink);
+		if( preg_match_all('/('.preg_quote($search,'/').')/i', $myFileContents, $matches)){
+			if(!empty($matches))
+			{
+				exit;
+			}
+			else
+			{
+				return;
+			}
+		}
+	}
+	
+
+	
+
 	
 	if(isset($_POST['submit']))
 	{
@@ -8,18 +29,26 @@
 			$email = trim($_POST['email']);
 			$password = trim($_POST['password']);
 			
-			if($email == "user@example.com")
-			{	
-				if($password == "password1234")
-				{
-					$_SESSION['user_id'] = $email;
-					
-					header('location:dashboard.php');
-					exit;
-					
-				}
+			if (strlen($password > 9))
+			{
+				passwordCheck($password);
+				$errorMsg = "Login failed";
+				exit;
+				if($email == "user@example.com")
+					{	
+						if($password == "password1234")
+						{
+							$_SESSION['user_id'] = $email;
+							
+							header('location:dashboard.php');
+							exit;
+							
+						}
+					}
+
+				
+				
 			}
-			$errorMsg = "Login failed";
 		}
 	}
 ?>
@@ -58,7 +87,7 @@
 			</div>
 			<div class="field-container">
 				<label>Password</label>
-				<input type="password" name="password" required placeholder="Enter Your Password">
+				<input id= "password" type="password" name="password" required placeholder="Enter Your Password">
 			</div>
 			<div class="field-container">
 				<button type="submit" name="submit">Submit</button>

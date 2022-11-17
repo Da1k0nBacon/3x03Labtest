@@ -22,6 +22,7 @@ services:
   
   git-server:
     build: ./git_server
+    container_name: git_server
     restart: always
     ports:
       - "3444:3444"

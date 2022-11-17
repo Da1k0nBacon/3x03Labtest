@@ -10,6 +10,7 @@ pipeline {
         stage('Deploy') {
 			steps {
 				sh 'pwd'
+				sh 'ls'
                 sh 'chmod 777 ./deploy.sh'
                 sh 'chmod 777 ./kill.sh'
                 sh './Webfiles/scripts/deploy.sh'

@@ -11,7 +11,6 @@ pipeline {
 			steps {
 				sh 'pwd'
 				sh 'ls'
-                sh 'chmod 777 ./deploy.sh'
                 sh 'chmod 777 ./kill.sh'
                 sh 'docker-compose build'
 				sh 'docker-compose up'

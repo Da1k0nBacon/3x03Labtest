@@ -1,16 +1,16 @@
 version: '3'
 
 services:
-  jenkins:
-    container_name: jenkins
-    build: ./jenkins
-    ports:
-      - '8080:8080'
-      - '443:8443'
-      - '50000:50000'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./jenkins_home:/var/jenkins_home
+  # jenkins:
+  #   container_name: jenkins
+  #   build: ./jenkins
+  #   ports:
+  #     - '8080:8080'
+  #     - '443:8443'
+  #     - '50000:50000'
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - ./jenkins_home:/var/jenkins_home
   
   webapp:
     container_name: webapp
@@ -19,5 +19,5 @@ services:
       - "80:80"
 
 volumes:
-  jenkins_data:
-    driver: local
+  # jenkins_data:
+  #   driver: local
